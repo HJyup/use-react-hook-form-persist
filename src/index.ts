@@ -105,27 +105,30 @@ export function useFormPersist<T extends FieldValues>(
 
   const { serialize, deserialize } = parser;
 
-  function filterData<T extends FieldValues>(
-    data: Partial<T>,
-    include?: Path<T>[],
-    exclude?: Path<T>[]
-  ): Partial<T> {
-    if (include?.length) {
-      const picked = {} as T;
-      for (const p of include) {
-        const value = getIn(data, p as Path<Partial<T>>);
-        if (value !== undefined)
-          setIn(picked, p, value as PathValue<T, Path<T>>);
+  const filterData = useCallback(
+    <T extends FieldValues>(
+      data: Partial<T>,
+      include?: Path<T>[],
+      exclude?: Path<T>[]
+    ): Partial<T> => {
+      if (include?.length) {
+        const picked = {} as T;
+        for (const p of include) {
+          const value = getIn(data, p as Path<Partial<T>>);
+          if (value !== undefined)
+            setIn(picked, p, value as PathValue<T, Path<T>>);
+        }
+        return picked;
       }
-      return picked;
-    }
-    if (exclude?.length) {
-      const pruned = structuredClone(data);
-      for (const p of exclude) deleteIn(pruned, p as Path<Partial<T>>);
-      return pruned;
-    }
-    return data;
-  }
+      if (exclude?.length) {
+        const pruned = structuredClone(data);
+        for (const p of exclude) deleteIn(pruned, p as Path<Partial<T>>);
+        return pruned;
+      }
+      return data;
+    },
+    [include, exclude]
+  );
 
   const save = useCallback(
     (data: Partial<T>) => {
@@ -194,7 +197,7 @@ export function useFormPersist<T extends FieldValues>(
     });
 
     return () => subscription.unsubscribe();
-  }, [form, save, storage, filterData, include, exclude]);
+  }, [form, save, storage, include, exclude]);
 
   const resetPersisted = useCallback(() => {
     storage?.removeItem(key);
