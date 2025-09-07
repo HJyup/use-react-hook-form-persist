@@ -1,36 +1,37 @@
-<img width="677" height="183" alt="Screenshot 2025-09-07 at 00 51 16" src="https://github.com/user-attachments/assets/f4a3a8c4-9763-457a-834d-13793b54ccfa" />
-
-# use-form-persist
+# use-react-hook-form-persist
 
 A lightweight hook for persisting form state in `react-hook-form`, with support for nested fields, custom storage, and full control.
 
-
 ## 🚀 Usage
+
 A small example how you can use this hook:
 
 ```javascript
 import { useForm } from "react-hook-form";
-import { useFormPersist } from "use-form-persist";
+import { useFormPersist } from "use-react-hook-form-persist";
 
 type FormValues = {
-  name: string;
-  email: string;
-  password: string;
+  name: string,
+  email: string,
+  password: string
 };
 
 export function ProfileForm() {
-  const form = useForm<FormValues>({
-    defaultValues: {
-      name: "John Doe",
-      email: "john.doe@example.com",
-      password: "",
-    },
-  });
+  const form =
+    useForm <
+    FormValues >
+    {
+      defaultValues: {
+        name: "John Doe",
+        email: "john.doe@example.com",
+        password: ""
+      }
+    };
 
   const persistedForm = useFormPersist(form, {
     key: "form-data",
     exclude: ["password"],
-    include: ["name", "email"],
+    include: ["name", "email"]
   });
 
   const { register, handleSubmit } = persistedForm;
@@ -44,24 +45,23 @@ export function ProfileForm() {
     </form>
   );
 }
-
 ```
 
-
 ## 📦 Installation
+
 Using your preferred package manager:
 
 ```bash
     # with pnpm
-    pnpm add use-form-persist
+    pnpm add use-react-hook-form-persist
 
     # or with npm
-    npm install use-form-persist
+    npm install use-react-hook-form-persist
 
     # or with yarn
-    yarn add use-form-persist
+    yarn add use-react-hook-form-persist
 ```
-    
+
 ## ✨ Features
 
 - Full control over storage (localStorage, sessionStorage, or custom) and serialisation parser.
@@ -70,8 +70,6 @@ Using your preferred package manager:
 - Handle schema changes gracefully with version numbers and optional mismatch callbacks.
 - Powered by TypeScript and react-hook-form’s path types for strong guarantees.
 
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-

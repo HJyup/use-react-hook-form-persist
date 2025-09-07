@@ -1,5 +1,5 @@
 {
-  "name": "use-form-persist",
+  "name": "use-react-hook-form-persist",
   "version": "0.0.1",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -46,11 +46,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HJyup/use-form-persist"
+    "url": "https://github.com/HJyup/use-react-hook-form-persist"
   },
-  "homepage": "https://github.com/HJyup/use-form-persist#readme",
+  "homepage": "https://github.com/HJyup/use-react-hook-form-persist#readme",
   "bugs": {
-    "url": "https://github.com/HJyup/use-form-persist/issues"
+    "url": "https://github.com/HJyup/use-react-hook-form-persist/issues"
   },
   "license": "MIT",
   "keywords": [
