@@ -29,9 +29,7 @@ export function ProfileForm() {
     };
 
   const persistedForm = useFormPersist(form, {
-    key: "form-data",
-    exclude: ["password"],
-    include: ["name", "email"]
+    key: "form-data"
   });
 
   const { register, handleSubmit } = persistedForm;

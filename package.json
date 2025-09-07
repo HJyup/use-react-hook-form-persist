@@ -1,6 +1,6 @@
 {
   "name": "use-react-hook-form-persist",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,8 @@
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
-    "test": "vitest"
+    "test": "vitest",
+    "semantic-release": "semantic-release --branches main"
   },
   "sideEffects": false,
   "peerDependencies": {
@@ -42,7 +43,8 @@
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.42.0",
-    "vitest": "^2.1.9"
+    "vitest": "^2.1.9",
+    "semantic-release": "^24.2.7"
   },
   "repository": {
     "type": "git",
